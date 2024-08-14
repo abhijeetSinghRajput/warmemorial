@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export const NavBar = ({menuActive, setMenuActive}) => {
     return (
@@ -21,9 +22,8 @@ export const NavBar = ({menuActive, setMenuActive}) => {
                 </div>
             </div>
             <ul>
-                <li><a href=''>home</a></li>
-                <li><a href=''>about</a></li>
-                <li><a href=''>contact</a></li>
+                <li><Link to='/'>home</Link></li>
+                <li><Link to='/memorial'>memorial</Link></li>
             </ul>
         </nav>
     )

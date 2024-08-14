@@ -1,12 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import '../css/utils.css';
 import { IoMdAddCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import {BASE_URL} from '../api/api_list';
-import { isAxiosError } from 'axios';
-import { render } from '@testing-library/react';
+import { BASE_URL } from '../api/api_list';
+import ProfileCard from './ProfileCard';
 
-export const Bricks = ({ data , war_id}) => {
+export const Bricks = ({ data, war_id }) => {
   // Define dummyData
   const dummyData = Array(200).fill().map((_, i) => {
     return {
@@ -26,8 +26,8 @@ export const Bricks = ({ data , war_id}) => {
   });
 
   // Determine the data to use
-  const renderData = Array.isArray(data)? data : dummyData;
-  
+  const renderData = Array.isArray(data) ? data : dummyData;
+
   //summary
   // if(data){
   //   renderData = (data.error)? dummyData : data;
@@ -35,6 +35,7 @@ export const Bricks = ({ data , war_id}) => {
   // else{
   //   rendarData = dummyData;
   // }
+
   return (
     <div id='bricks'>
       <Link to={`/addwarrior/${war_id}`}>
@@ -47,7 +48,11 @@ export const Bricks = ({ data , war_id}) => {
 
       {
         renderData.map((e) => (
-          <div className='brick' key={e.martyr_id}>
+          <div 
+            className='brick'
+            key={e.martyr_id}
+            tabIndex={0}
+            >
             <span className='icon'>
               <img src='http://localhost:3000/assets/wreath.png' alt="Wreath" />
             </span>
@@ -55,6 +60,15 @@ export const Bricks = ({ data , war_id}) => {
             <div className='sahid-img hidden'>
               <img className='sahid-img hidden' src={`${BASE_URL}/api/uploads/${e.photo}`} alt="Sahid" height={"100%"} width={'100%'} />
             </div>
+
+            <ProfileCard 
+              name={e.name}
+              src={`${BASE_URL}/api/uploads/${e.photo}`} alt="Sahid" height={"100%"}
+              rank={'1'}
+              datePeriod={'1972-1991'}
+              serviceNumber={'123'}
+              branch={'army'}
+            />
           </div>
         ))
       }

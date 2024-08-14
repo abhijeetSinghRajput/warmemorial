@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from './Home'
 import { Memorial } from './Memorial'
 import { AddWarrior } from './AddWarrior'
+import Landing from './Landing'
 
 export const Body = () => {
     const appRouter = createBrowserRouter([
@@ -12,7 +13,11 @@ export const Body = () => {
             children:[
                 {
                     path:'/',
-                    element:<Memorial/>
+                    element:<Landing/>
+                },
+                {
+                    path: "/memorial",
+                    element: <Memorial/>
                 },
                 {
                     path: "/details/:war_id",
