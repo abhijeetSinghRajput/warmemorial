@@ -50,7 +50,7 @@ function Landing() {
     <div id="landing">
       <button>
       <Link to='/addwarrior/undefined'>
-        hello
+        add warrior
       </Link>
       </button>
       <div className='text' ref={textRef}>indian army</div>
